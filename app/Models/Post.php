@@ -5,11 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+
+class Post extends Model implements TranslatableContract
 {
     use HasFactory;
 
+    use Translatable;
+
     protected $guarded = [];
+    public $translatedAttributes = ['title', 'body'];
 
     public function category(){
         return $this->belongsTo(Category::class);

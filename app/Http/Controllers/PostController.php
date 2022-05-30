@@ -17,12 +17,15 @@ class PostController extends Controller
      */
     public function index()
     {
+        $locale = app()->getLocale();
+
         return view('posts.index', [
             'posts' => Post::latest()->filter(request(['search', 'category', 'tag']))->get(),
             'categories' => Category::all(),
             'currentCategory' => Category::firstWhere('slug', request('category')),
             'tags' => Tag::all(),
-            'currentTag' => Tag::firstWhere('slug', request('tag'))
+            'currentTag' => Tag::firstWhere('slug', request('tag')),
+            'locale' => $locale
         ]);
     }
 

@@ -3,7 +3,7 @@
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-              
+                {{  $locale }}
             </h2>
             <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
                 <!--  Category -->

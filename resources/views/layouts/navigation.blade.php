@@ -15,6 +15,13 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @foreach (config('translatable.locales') as $locale)
+                            <a href="{{ request()->url() }}?language={{ $locale }}"
+                               class="@if (app()->getLocale() == $locale) border-indigo-400 @endif inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 focus:outline-none transition duration-150 ease-in-out">
+                                [{{ strtoupper($locale) }}]
+                            </a>
+                    @endforeach
                 </div>
             </div>
 

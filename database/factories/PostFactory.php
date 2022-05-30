@@ -13,11 +13,34 @@ class PostFactory extends Factory
      */
     public function definition()
     {
+
+        // foreach (config('translatable.locales') as $locale) {
+        //     $rules[$locale . '.title'] = 'string';
+        //     $rules[$locale . '.full_text'] = 'string';
+        // }
+
+        // $data = [
+        //     'author' => 'Gummibeer',
+           
+        //   ];
+
         return [
             'user_id' => rand(1, 5),
             'category_id' => rand(1, 5),
-            'title' => $this->faker->sentence,
-            'body' => $this->faker->paragraph,
+            'en' => [
+                'title' => $this->faker->unique()->sentence,
+                'body' =>  $this->faker->unique()->paragraph,
+            ],
+            'es' => [
+                'title' => $this->faker->unique()->sentence,
+                'body' =>  $this->faker->unique()->paragraph,
+            ],
+            'de' => [
+                'title' => $this->faker->unique()->sentence,
+                'body' =>  $this->faker->unique()->paragraph,
+            ],
+            // 'title' =>  $this->faker->unique()->sentence,
+            // 'body' =>  $this->faker->unique()->paragraph,
             'image' => null
         ];
     }
